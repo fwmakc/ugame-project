@@ -23,7 +23,7 @@
   "license": "MIT",
   "main": "index.js",
   "bin": {
-    "create-ts-vite-project": "./index.js"
+    "create-ugame-project": "./index.js"
   },
   "files": [
     "template",

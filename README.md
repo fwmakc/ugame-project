@@ -17,8 +17,8 @@
 Выполняем
 
 ```
-yarn create ts-vite-project
-# npm create ts-vite-project
+yarn create ugame-project
+# npm create ugame-project
 ```
 
 Проект будет установлен в папку с названием проекта.
