@@ -1,0 +1,35 @@
+{
+  "name": "create-ugame",
+  "version": "0.1.0",
+  "productName": "UGame Template Creator",
+  "description": "Templates for multiplatform games based typescript and vite",
+  "keywords": [
+    "typescript",
+    "electron",
+    "vite",
+    "desktop",
+    "windows",
+    "win32",
+    "mac",
+    "web",
+    "game",
+    "games",
+    "game engine",
+    "create",
+    "template"
+  ],
+  "repository": "https://github.com/fwmakc/ugame-project.git",
+  "author": "fwmakc <fwmakc@mail.ru>",
+  "license": "MIT",
+  "main": "index.js",
+  "bin": {
+    "create-ts-vite-project": "./index.js"
+  },
+  "files": [
+    "template",
+    ".gitignore",
+    "LICENSE",
+    "README.md",
+    "index.js"
+  ]
+}
