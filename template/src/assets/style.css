@@ -52,10 +52,6 @@ h1 {
   &:hover {
     filter: drop-shadow(0 0 2em #646cffaa);
   }
-  
-  &.vanilla:hover {
-    filter: drop-shadow(0 0 2em #3178c6aa);
-  }
 }
 
 .card {

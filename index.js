@@ -7,10 +7,10 @@ const { execSync } = require('child_process');
 
 // Задаем значения по-умолчанию
 const defaults = {
-  projectName: 'ts-vite-project',
+  projectName: 'ugame-project',
   version: '0.1.0',
-  productName: 'TS Vite Project',
-  description: 'TypeScript Vite application',
+  productName: 'UGame Project',
+  description: 'Yet Another UGame Multiplatform Project',
   repository: '',
   author: '',
 }
@@ -128,7 +128,19 @@ function updatePackageJson(targetDir, fields) {
 }
 
 async function main() {
-  console.log('🚀 Creating TypeScript + Vite Project');
+
+  console.log('\n');
+  console.log('     ___');
+  console.log('    /__//___      ______');
+  console.log('     ___/  //    /     //');
+  console.log('    /     //    /     //   .:::.  .:::.  .:.   .:. .:::.');
+  console.log('   /_____//    /     //   ::     ::  :: :::: .::: ::  ::');
+  console.log('  ______      /     //   ::  :: :::::: :: ::\' :: :::::\'');
+  console.log(' /__   //____/  ___//    \':::\' ::  :: ::     ::  \'::::\'');
+  console.log('   /___________//');
+  console.log('\n');
+
+  console.log('🚀 Creating UGame Project');
   console.log('(will be installed in project name folder)\n');
 
   // Парсим аргументы командной строки
