@@ -17,8 +17,8 @@
 Выполняем
 
 ```
-yarn create ugame-project
-# npm create ugame-project
+yarn create ugame
+# npm create ugame
 ```
 
 Проект будет установлен в папку с названием проекта.

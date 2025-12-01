@@ -1,6 +1,6 @@
 {
   "name": "create-ugame",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "productName": "UGame Template Creator",
   "description": "Templates for multiplatform games based typescript and vite",
   "keywords": [
@@ -23,7 +23,7 @@
   "license": "MIT",
   "main": "index.js",
   "bin": {
-    "create-ugame-project": "./index.js"
+    "create-ugame": "./index.js"
   },
   "files": [
     "template",
