@@ -221,23 +221,29 @@ async function main() {
     });
 
     console.log('\n✅ Project created successfully!');
-
-    // Переходим к Next steps
-    console.log('\nNext steps:');
-    console.log(`📁 cd ${defaults.projectName}`);
-    console.log('📦 npm install');
-    console.log('⭐ npm run dev');
+    let isDependenciesInstalled = false;
 
     if (projectNameFromArgs) {
       await executeNextSteps(targetDir, true);
+      isDependenciesInstalled = true;
     } else {
       // Запрашиваем выполнение Next steps
       const executeSteps = await question('\nInstall dependencies automatically? (y/N): ');
 
       if (executeSteps.toLowerCase() === 'y') {
         await executeNextSteps(targetDir);
+        isDependenciesInstalled = true;
       }
     }
+
+    // Переходим к Next steps
+    console.log('\nRun your game now:');
+    console.log(`📁 cd ${defaults.projectName}`);
+    if (!isDependenciesInstalled) {
+      console.log('📦 npm install');
+    }
+    console.log('📦 npm run build');
+    console.log('⭐ npm run preview');
 
     console.log('\nHappy coding! 👋');
   } catch (error) {
