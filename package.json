@@ -1,6 +1,6 @@
 {
   "name": "create-ugame",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "productName": "UGame Template Creator",
   "description": "Templates for multiplatform games based typescript and vite",
   "keywords": [
