@@ -1,11 +1,11 @@
 {
   "compilerOptions": {
     "lib": ["ES2022", "DOM", "Decorators"],
-    "types": ["node", "vitest/globals"],
+    "types": ["node"],
 
     "target": "ES2022",
-    "module": "ESNext",
-    "moduleResolution": "bundler",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
 
     "outDir": "./dist",
     "rootDir": "./",
@@ -25,13 +25,10 @@
     "noEmitOnError": true
   },
   "include": [
-    "src/**/*",
-    "electron/**/*"
+    "src/**/*"
   ],
   "exclude": [
-    "build",
     "dist",
-    "out",
     "node_modules",
     "**/*.case.ts",
     "**/*.test.ts",

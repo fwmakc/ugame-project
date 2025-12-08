@@ -1,5 +1,5 @@
 export default {
-  appId: 'com.example.myapp',
+  appId: 'com.example.ugame',
   icon: 'electron/app.ico',
   asar: true,
   asarUnpack: [
@@ -9,6 +9,12 @@ export default {
     'dist/**/*',
     'electron/**/*',
   ],
+  // appId: 'com.__.desktop',
+  // copyright: 'Copyright © 2022 __',
+  // directories: {
+  //   output: 'release/${version}',
+  // },
+  // artifactName: '${productName}_${version}.${ext}',
   extraResources: [
     {
       from: 'electron/app.ico',

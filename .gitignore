@@ -17,10 +17,14 @@ node_modules/
 !.yarn/versions
 
 # Build outputs
-dist/
-dist-ssr/
+android/
 build/
 coverage/
+dist/
+dist-ssr/
+out/
+platforms/
+src-tauri/
 *.tsbuildinfo
 
 # Environment variables
@@ -52,7 +56,3 @@ jest-cache/
 
 # ESLint cache
 .eslintcache
-
-# Optional
-out/
-android/

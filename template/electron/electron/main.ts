@@ -1,6 +1,6 @@
 import * as path from 'path';
 
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, Menu } from 'electron';
 
 // Глобальный обработчик необработанных ошибок
 // Завершаем процесс с кодом ошибки
@@ -32,6 +32,8 @@ function activateMainWindow(): void {
 }
 
 function createWindow(): void {
+  Menu.setApplicationMenu(null);
+
   const window = new BrowserWindow({
     width: 800,
     height: 600,
@@ -40,10 +42,20 @@ function createWindow(): void {
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: true,
+      // preload: join(__dirname, './preload.js')
     },
   });
 
   window.loadFile('dist/index.html');
+
+  // if (app.isPackaged) {
+  //   window.loadFile('dist/index.html')
+  // } else {
+  //   window.loadURL('https://localhost:5173')
+  // }
+
+  // uncomment below to open the DevTools
+  // win.webContents.openDevTools()
 }
 
 async function handleSquirrelEvent(): Promise<boolean> {
