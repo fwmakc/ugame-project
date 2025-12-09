@@ -39,6 +39,10 @@ export async function copyProject(
     }
   }
 
+  if (libraries.includes('tauri')) {
+    copyRecursive(path.join(sourceFolder, 'template', 'tauri'), targetFolder);
+  }
+
   // Копируем остальные файлы
   copyFile('.gitignore', sourceFolder, targetFolder);
   copyFile('LICENSE', sourceFolder, targetFolder);

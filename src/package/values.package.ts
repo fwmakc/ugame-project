@@ -19,12 +19,9 @@ export async function valuesPackage(): Promise<IPackage> {
     await question('Product name (required)', productName, true)
   ).trim();
 
-  name = productName
-    .split(' ')
-    .map(i => i.toLowerCase())
-    .join('-');
-
+  name = productName.toLowerCase().replace(/[\W_]+/giu, '-');
   name = (await question('Project (required)', name, true)).trim();
+  name = name.replaceAll(' ', '').replace(/[^\w._-]+/giu, '-');
 
   description = (
     await question('Description (required)', description, true)
@@ -45,7 +42,10 @@ export async function valuesPackage(): Promise<IPackage> {
 
   repository = {};
 
-  const defaultInputUrl = `https://github.com/${author.name}/${name}.git`;
+  const repoAuthor = author.name
+    .replaceAll(' ', '')
+    .replace(/[^\w._-]+/giu, '-');
+  const defaultInputUrl = `https://github.com/${repoAuthor}/${name}.git`;
   const url = (await question('Repository url', defaultInputUrl)).trim();
 
   if (url) {

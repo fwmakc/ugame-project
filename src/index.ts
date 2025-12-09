@@ -5,6 +5,7 @@ import { error } from './helpers/error.helper';
 import { installDependencies } from './helpers/install_dependencies.helper';
 import { makeTargetFolder } from './helpers/make_target_folder.helper';
 import { print } from './helpers/print.helper';
+import { updateTauri } from './helpers/update.tauri';
 import { librariesPackage } from './package/libraries.package';
 import { updatePackage } from './package/update.package';
 import { valuesPackage } from './package/values.package';
@@ -48,6 +49,9 @@ async function main(): Promise<void> {
 
     // Обновляем package.json
     updatePackage(projectFolder, packageValues, packageLibraries);
+
+    // Обновляем tauri.config.json
+    updateTauri(projectFolder, packageValues, packageLibraries.libraries);
 
     print(['✅ Project created successfully!']);
 

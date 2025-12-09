@@ -73,8 +73,8 @@ export async function librariesPackage(): Promise<ILibraries> {
 
   if (libraries.includes('tauri')) {
     scripts['tauri:init'] = 'tauri init --force';
-    scripts['tauri:dev'] = 'tauri dev';
-    scripts['tauri:build'] = 'tauri build';
+    scripts['tauri:dev'] = 'tauri dev --config tauri.config.json';
+    scripts['tauri:build'] = 'tauri build --config tauri.config.json';
 
     devDependencies['@tauri-apps/cli'] = '^2.9.5';
   }
