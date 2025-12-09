@@ -6,8 +6,8 @@
   "build": {
     "frontendDist": "../dist",
     "devUrl": "http://localhost:8080",
-    "beforeDevCommand": "yarn dev",
-    "beforeBuildCommand": ""
+    "beforeDevCommand": "cross-env VITE_BUILD_TARGET=tauri VITE_RUNTIME_PLATFORM=desktop npm run dev",
+    "beforeBuildCommand": "npm run tauri:compile"
   },
   "app": {
     "windows": [

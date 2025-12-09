@@ -11,9 +11,9 @@
   "homepage": "",
   "main": "",
   "scripts": {
+    "dev": "vite --config vite/config.dev.js",
     "build": "npm run lint && npm run test && npm run compile",
     "compile": "tsc && vite build --config vite/config.prod.js",
-    "dev": "vite --config vite/config.dev.js",
     "preview": "vite preview",
     "lint": "eslint . --fix",
     "test": "vitest run --config ./vitest.config.js"

@@ -19,14 +19,18 @@ export async function librariesPackage(): Promise<ILibraries> {
   if (libraries.includes('capacitor')) {
     scripts['capacitor:android'] = 'cap add android';
     scripts['capacitor:ios'] = 'cap add ios';
-    scripts['capacitor:assets'] =
-      'capacitor-assets generate --android --ios --assetPath public --androidProject build/capacitor/android --iosProject build/capacitor/ios/App';
     scripts['capacitor:make'] =
-      'npm run build && cap copy && npm run capacitor:assets';
-    scripts['capacitor:dev'] =
+      'cap copy && capacitor-assets generate --android --ios --assetPath public --androidProject build/capacitor/android --iosProject build/capacitor/ios/App';
+    scripts['capacitor:debug'] =
       'cd build/capacitor/android && gradlew assembleDebug';
-    scripts['capacitor:build'] =
+    scripts['capacitor:release'] =
       'cd build/capacitor/android && gradlew assembleRelease';
+    scripts['capacitor:compile'] =
+      'cross-env VITE_BUILD_TARGET=capacitor VITE_RUNTIME_PLATFORM=mobile npm run compile';
+    scripts['capacitor:dev'] =
+      'npm run capacitor:compile && npm run capacitor:make && npm run capacitor:debug';
+    scripts['capacitor:build'] =
+      'npm run capacitor:compile && npm run capacitor:make && npm run capacitor:release';
 
     devDependencies['@capacitor/android'] = '^7.4.4';
     devDependencies['@capacitor/assets'] = '^3.0.5';
@@ -38,10 +42,11 @@ export async function librariesPackage(): Promise<ILibraries> {
   if (libraries.includes('electron')) {
     main = 'electron/main.ts';
 
-    scripts['electron:dev'] = 'electron .';
+    scripts['electron:compile'] =
+      'cross-env VITE_BUILD_TARGET=electron VITE_RUNTIME_PLATFORM=desktop npm run compile';
+    scripts['electron:preview'] = 'npm run electron:compile && electron .';
 
     devDependencies['@electron-forge/cli'] = '^7.10.2';
-    devDependencies['@electron/fuses'] = '^1.8.0';
     devDependencies['@types/electron-squirrel-startup'] = '^1.0.2';
     devDependencies['electron'] = '^39.2.2';
 
@@ -49,17 +54,17 @@ export async function librariesPackage(): Promise<ILibraries> {
 
     if (libraries.includes('builder')) {
       scripts['electron:build'] =
-        'electron-builder --config electron-builder.config.js';
+        'npm run electron:compile && electron-builder --config electron-builder.config.js';
 
       devDependencies['electron-builder'] = '^26.0.12';
       devDependencies['electron-builder-squirrel-windows'] = '^26.0.12';
     }
 
     if (libraries.includes('forge')) {
-      scripts['electron:make'] = 'electron-forge make';
-      scripts['electron:start'] = 'electron-forge start';
-      scripts['electron:package'] = 'electron-forge package';
+      scripts['electron:make'] =
+        'npm run electron:compile && electron-forge make';
 
+      devDependencies['@electron/fuses'] = '^1.8.0';
       devDependencies['@electron-forge/cli'] = '^7.10.2';
       devDependencies['@electron-forge/maker-deb'] = '^7.10.2';
       devDependencies['@electron-forge/maker-dmg'] = '^7.10.2';
@@ -72,6 +77,9 @@ export async function librariesPackage(): Promise<ILibraries> {
   }
 
   if (libraries.includes('tauri')) {
+    scripts['tauri:compile'] =
+      'cross-env VITE_BUILD_TARGET=tauri VITE_RUNTIME_PLATFORM=desktop npm run compile';
+
     scripts['tauri:init'] = 'tauri init --force';
     scripts['tauri:dev'] = 'tauri dev --config tauri.config.json';
     scripts['tauri:build'] = 'tauri build --config tauri.config.json';
