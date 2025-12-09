@@ -16,11 +16,11 @@ export async function valuesPackage(): Promise<IPackage> {
   } = defaults;
 
   productName = (
-    await question('Product name (required)', productName, true)
+    await question('Title / product name (required)', productName, true)
   ).trim();
 
   name = productName.toLowerCase().replace(/[\W_]+/giu, '-');
-  name = (await question('Project (required)', name, true)).trim();
+  name = (await question('Project / name (required)', name, true)).trim();
   name = name.replaceAll(' ', '').replace(/[^\w._-]+/giu, '-');
 
   description = (
@@ -37,7 +37,9 @@ export async function valuesPackage(): Promise<IPackage> {
 
   author = {};
 
-  author.name = (await question('Author (required)', '', true)).trim();
+  author.name = (
+    await question('Author / vendor / git (reqired)', '', true)
+  ).trim();
   author.email = (await question('Email (required)', '', true)).trim();
 
   repository = {};

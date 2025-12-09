@@ -19,7 +19,7 @@ export function updateTauri(
   const tauriConfig = JSON.parse(readFileSync(tauriConfigPath, 'utf8'));
 
   // Обновляем поля
-  tauriConfig.productName = fields.name;
+  tauriConfig.productName = fields.productName;
   tauriConfig.version = fields.version;
 
   const author = String(
@@ -30,7 +30,7 @@ export function updateTauri(
   const name = String(fields.name || '').replace(/[\W_]+/giu, '-');
 
   tauriConfig.identifier = `com.${author}.${name}`;
-  tauriConfig.app.windows.title = fields.productName;
+  tauriConfig.app.windows[0].title = fields.productName;
 
   try {
     writeFileSync(tauriConfigPath, JSON.stringify(tauriConfig, null, 2));
