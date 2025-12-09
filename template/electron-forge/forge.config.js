@@ -6,7 +6,7 @@ const author = packageJson.author?.name || packageJson.author;
 const name  = packageJson.name.replaceAll('-', '_');
 
 export default {
-  outDir: 'build/electron-forge/${version}',
+  outDir: 'build/electron-forge',
   packagerConfig: {
     appBundleId: `com.${author}.${name}`,
     icon: 'public/app.ico',

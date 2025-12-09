@@ -22,7 +22,7 @@ export default {
   // ],
   directories: {
     // buildResources: "build/resources",
-    output: 'build/electron-builder/${version}',
+    output: 'build/electron-builder',
   },
   // mac: {
   //   category: 'your.app.category.type',
