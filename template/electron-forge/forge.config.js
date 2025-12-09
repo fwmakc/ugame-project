@@ -14,9 +14,30 @@ export default {
     asarUnpack: [
       'resources/**',
     ],
-    extraResource: [
-      'public/app.ico',
-    ],
+    ignore(path) {
+      const rootFolderPattern = /^\/?[^/\\.]+$/;
+
+      if (rootFolderPattern.test(path)) {
+        if (path.startsWith('/dist')) return false;
+        if (path.startsWith('/electron')) return false;
+        if (path.startsWith('/node_modules')) return false;
+        return true;
+      }
+
+      const rootFilePattern = /^\/?[^/\\]+\.[^/\\]+$/;
+
+      if (rootFilePattern.test(path)) {
+        if (path.includes('package.json')) {
+          return false;
+        }
+        return true;
+      }
+
+      return false;
+    },
+    // extraResource: [
+    //   'public/app.ico',
+    // ],
   },
   rebuildConfig: {},
   makers: [

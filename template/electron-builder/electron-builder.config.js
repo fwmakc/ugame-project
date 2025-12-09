@@ -13,6 +13,7 @@ export default {
   ],
   files: [
     'dist/**/*',
+    'electron/**/*',
   ],
   // extraResources: [
   //   {
