@@ -47,7 +47,7 @@ async function main(): Promise<void> {
     await copyProject(sourceFolder, projectFolder, packageLibraries.libraries);
 
     // Обновляем package.json
-    updatePackageJson(projectFolder, packageValues, packageLibraries);
+    updatePackage(projectFolder, packageValues, packageLibraries);
 
     print(['✅ Project created successfully!']);
 
