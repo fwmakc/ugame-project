@@ -17,12 +17,9 @@ node_modules/
 !.yarn/versions
 
 # Build outputs
-android/
 build/
-coverage/
 dist/
 dist-ssr/
-out/
 platforms/
 src-tauri/
 *.tsbuildinfo

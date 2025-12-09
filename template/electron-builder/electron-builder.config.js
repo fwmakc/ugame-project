@@ -1,29 +1,28 @@
+import packageJson from './package.json' with { type: 'json' };
+
+const author = packageJson.author?.name || packageJson.author;
+const name  = packageJson.name.replaceAll('-', '_');
+
 export default {
-  appId: 'com.example.ugame',
-  icon: 'electron/app.ico',
+  appId: `com.${author}.${name}`,
+  artifactName: '${productName}-v${version}.${ext}',
+  icon: 'public/app.ico',
   asar: true,
   asarUnpack: [
     'resources/**',
   ],
   files: [
     'dist/**/*',
-    'electron/**/*',
   ],
-  // appId: 'com.__.desktop',
-  // copyright: 'Copyright © 2022 __',
-  // directories: {
-  //   output: 'release/${version}',
-  // },
-  // artifactName: '${productName}_${version}.${ext}',
-  extraResources: [
-    {
-      from: 'electron/app.ico',
-      to: 'app.ico',
-    },
-  ],
+  // extraResources: [
+  //   {
+  //     from: 'public/app.ico',
+  //     to: 'app.ico',
+  //   },
+  // ],
   directories: {
     // buildResources: "build/resources",
-    output: 'out/electron-builder',
+    output: 'build/electron-builder/${version}',
   },
   // mac: {
   //   category: 'your.app.category.type',
@@ -37,8 +36,8 @@ export default {
   //   target: 'AppImage',
   // },
   nsis: {
-    installerIcon: 'electron/app.ico',
-    uninstallerIcon: 'electron/app.ico',
+    installerIcon: 'public/app.ico',
+    uninstallerIcon: 'public/app.ico',
     license: 'LICENSE',
     oneClick: false,
     allowToChangeInstallationDirectory: true,

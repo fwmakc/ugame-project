@@ -2,11 +2,11 @@ import type { ILibraries } from '../interfaces/libraries.interface';
 import type { ILibrariesParams } from '../interfaces/libraries_params.interface';
 import { multiselect } from '../prompts/multiselect.prompt';
 
-export async function preparePackageLibraries(): Promise<ILibraries> {
+export async function librariesPackage(): Promise<ILibraries> {
   const options = ['electron', '  builder', '  forge', 'capacitor', 'tauri'];
 
   const libraries = await multiselect(
-    'Select extended project libraries?',
+    'Select extended project libraries',
     options,
     true,
   );
@@ -17,9 +17,22 @@ export async function preparePackageLibraries(): Promise<ILibraries> {
   let main: string = '';
 
   if (libraries.includes('capacitor')) {
+    scripts['capacitor:android'] = 'cap add android';
+    scripts['capacitor:ios'] = 'cap add ios';
+    scripts['capacitor:assets'] =
+      'capacitor-assets generate --android --ios --assetPath public --androidProject build/capacitor/android --iosProject build/capacitor/ios/App';
+    scripts['capacitor:make'] =
+      'npm run build && cap copy && npm run capacitor:assets';
+    scripts['capacitor:dev'] =
+      'cd build/capacitor/android && gradlew assembleDebug';
+    scripts['capacitor:build'] =
+      'cd build/capacitor/android && gradlew assembleRelease';
+
     devDependencies['@capacitor/android'] = '^7.4.4';
+    devDependencies['@capacitor/assets'] = '^3.0.5';
     devDependencies['@capacitor/cli'] = '^7.4.4';
     devDependencies['@capacitor/core'] = '^7.4.4';
+    devDependencies['@capacitor/ios'] = '^7.4.4';
   }
 
   if (libraries.includes('electron')) {
@@ -59,9 +72,9 @@ export async function preparePackageLibraries(): Promise<ILibraries> {
   }
 
   if (libraries.includes('tauri')) {
-    scripts['tauri:build'] = 'tauri build';
-    scripts['tauri:dev'] = 'tauri dev';
     scripts['tauri:init'] = 'tauri init --force';
+    scripts['tauri:dev'] = 'tauri dev';
+    scripts['tauri:build'] = 'tauri build';
 
     devDependencies['@tauri-apps/cli'] = '^2.9.5';
   }

@@ -1,12 +1,11 @@
 import { existsSync, readFileSync, writeFileSync } from 'fs';
 import path from 'path';
 
+import { error } from '../helpers/error.helper';
 import type { ILibraries } from '../interfaces/libraries.interface';
 import type { IPackage } from '../interfaces/package.interface';
 
-import { error } from './error.helper';
-
-export function updatePackageJson(
+export function updatePackage(
   targetDir: string,
   fields: IPackage,
   libraries: ILibraries,

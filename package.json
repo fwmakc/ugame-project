@@ -1,8 +1,8 @@
 {
   "name": "create-ugame",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "productName": "UGame Template Creator",
-  "description": "Templates for multiplatform games based typescript and vite",
+  "description": "Template for multiplatform games based typescript and vite",
   "license": "MIT",
   "keywords": [
     "game", "games", "game engine", "typescript", "electron", "tauri", "vite", "desktop", "windows", "win32", "mac", "web", "android", "ios", "create", "template"

@@ -1,15 +1,21 @@
 import { FusesPlugin } from '@electron-forge/plugin-fuses';
 import { FuseV1Options, FuseVersion } from '@electron/fuses';
+import packageJson from './package.json' with { type: 'json' };
+
+const author = packageJson.author?.name || packageJson.author;
+const name  = packageJson.name.replaceAll('-', '_');
 
 export default {
+  outDir: 'build/electron-forge/${version}',
   packagerConfig: {
-    icon: 'electron/app.ico',
+    appBundleId: `com.${author}.${name}`,
+    icon: 'public/app.ico',
     asar: true,
     asarUnpack: [
       'resources/**',
     ],
     extraResource: [
-      'electron/app.ico',
+      'public/app.ico',
     ],
   },
   rebuildConfig: {},
@@ -19,8 +25,8 @@ export default {
       config: {
         // frameworkVersion: 'net461',
         iconUrl: 'file:///',
-        setupIcon: 'electron/app.ico',
-        loadingGif: 'electron/background.png',
+        setupIcon: 'public/app.ico',
+        loadingGif: 'public/splash.png',
         createDesktopShortcut: true,
         createStartMenuShortcut: true,
 
@@ -34,7 +40,7 @@ export default {
     {
       name: '@electron-forge/maker-dmg',
       config: {
-        background: 'electron/background.png',
+        background: 'public/splash.png',
         format: 'ULFO',
       }
     },

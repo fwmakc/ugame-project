@@ -29,12 +29,9 @@
     "electron/**/*"
   ],
   "exclude": [
-    "android",
     "build",
-    "coverage",
     "dist",
     "dist-ssr",
-    "out",
     "platforms",
     "src-tauri",
     "node_modules",
