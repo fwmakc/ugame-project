@@ -1,7 +1,9 @@
-node_modules
-dist
 build
-coverage
+dist
+dist-ssr
+platforms
+src-tauri
+node_modules
 *.md
 *.json
 *.min.js
