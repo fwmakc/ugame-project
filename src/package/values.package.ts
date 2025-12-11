@@ -38,7 +38,7 @@ export async function valuesPackage(): Promise<IPackage> {
   author = {};
 
   author.name = (
-    await question('Author / vendor / git (reqired)', '', true)
+    await question('Author / vendor / git (required)', '', true)
   ).trim();
   author.email = (await question('Email (required)', '', true)).trim();
 
